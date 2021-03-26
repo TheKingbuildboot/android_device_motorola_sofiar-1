@@ -19,9 +19,12 @@
 # product configuration (apps).
 #
 
+#Bootanimation
+TARGET_BOOT_ANIMATION_RES := 1080
+
 PRODUCT_EXTRA_VNDK_VERSIONS := 29
 
-VENDOR_EXCEPTION_PATHS := havoc \
+VENDOR_EXCEPTION_PATHS := dot \
     motorola \
     gapps \
     microg
@@ -31,8 +34,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 
-# Inherit some common HavocOS stuff
-$(call inherit-product, vendor/havoc/config/common_full_phone.mk)
+# Inherit some common DotOS stuff
+$(call inherit-product, vendor/dot/config/common.mk)
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
@@ -66,7 +69,7 @@ $(call inherit-product, device/motorola/sofiar/device.mk)
 PRODUCT_SHIPPING_API_LEVEL := 29
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := havoc_sofiar
+PRODUCT_NAME := dot_sofiar
 PRODUCT_DEVICE := sofiar
 PRODUCT_BRAND := motorola
 PRODUCT_MANUFACTURER := motorola
