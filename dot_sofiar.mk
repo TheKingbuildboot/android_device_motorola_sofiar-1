@@ -19,6 +19,9 @@
 # product configuration (apps).
 #
 
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
+
 #Bootanimation
 TARGET_BOOT_ANIMATION_RES := 1080
 
@@ -78,10 +81,10 @@ PRODUCT_MODEL := moto g8 power
 TARGET_DEVICE := Moto G8 Power
 PRODUCT_SYSTEM_NAME := Moto G8 Power
 
-VENDOR_RELEASE := 10/QPE30.79-25/59f4f:user/release-keys
-BUILD_FINGERPRINT := motorola/sofiar_retail/sofiar:$(VENDOR_RELEASE)
-#OMNI_BUILD_FINGERPRINT := motorola/sofiar_retail/sofiar:$(VENDOR_RELEASE)
-#OMNI_PRIVATE_BUILD_DESC := "'sofiar_retail-user 10 QPE30.79-25 59f4f release-keys'"
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRIVATE_BUILD_DISC="sofiar_retail-user 10 QPE30.79-25 59f4f release-keys"
+
+BUILD_FINGERPRINT := "google/redfin/redfin:11/RQ3A.210705.001/7380771:user/release-keys"
 
 PLATFORM_SECURITY_PATCH_OVERRIDE := 2019-12-01
 
