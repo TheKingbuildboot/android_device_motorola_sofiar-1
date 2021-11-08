@@ -19,9 +19,15 @@
 # product configuration (apps).
 #
 
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
+
+#Bootanimation
+TARGET_BOOT_ANIMATION_RES := 1080
+
 PRODUCT_EXTRA_VNDK_VERSIONS := 29
 
-VENDOR_EXCEPTION_PATHS := havoc \
+VENDOR_EXCEPTION_PATHS := dot \
     motorola \
     gapps \
     microg
@@ -31,8 +37,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 
-# Inherit some common HavocOS stuff
-$(call inherit-product, vendor/havoc/config/common_full_phone.mk)
+# Inherit some common DotOS stuff
+$(call inherit-product, vendor/dot/config/common.mk)
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
@@ -66,7 +72,7 @@ $(call inherit-product, device/motorola/sofiar/device.mk)
 PRODUCT_SHIPPING_API_LEVEL := 29
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := havoc_sofiar
+PRODUCT_NAME := dot_sofiar
 PRODUCT_DEVICE := sofiar
 PRODUCT_BRAND := motorola
 PRODUCT_MANUFACTURER := motorola
@@ -75,10 +81,10 @@ PRODUCT_MODEL := moto g8 power
 TARGET_DEVICE := Moto G8 Power
 PRODUCT_SYSTEM_NAME := Moto G8 Power
 
-VENDOR_RELEASE := 10/QPE30.79-25/59f4f:user/release-keys
-BUILD_FINGERPRINT := motorola/sofiar_retail/sofiar:$(VENDOR_RELEASE)
-#OMNI_BUILD_FINGERPRINT := motorola/sofiar_retail/sofiar:$(VENDOR_RELEASE)
-#OMNI_PRIVATE_BUILD_DESC := "'sofiar_retail-user 10 QPE30.79-25 59f4f release-keys'"
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRIVATE_BUILD_DISC="sofiar_retail-user 10 QPE30.79-25 59f4f release-keys"
+
+BUILD_FINGERPRINT := "google/redfin/redfin:11/RQ3A.210705.001/7380771:user/release-keys"
 
 PLATFORM_SECURITY_PATCH_OVERRIDE := 2019-12-01
 
@@ -86,7 +92,7 @@ TARGET_VENDOR := motorola
 
 PRODUCT_PRODUCT_PROPERTIES += \
     debug.sf.enable_gl_backpressure=0 \
-    debug.sf.enable_hwc_vds=1 \
+    debug.sf.enable_hwc_vds=0 \
     debug.sf.latch_unsignaled=1 \
     vendor.camera.aux.packagelist=com.android.settings,com.motorola.camera2,com.motorola.camera3 \
     ro.config.use_compaction=true \
